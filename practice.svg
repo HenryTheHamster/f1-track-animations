@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="1000" height="800" 
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<style type="text/css">
+<![CDATA[
+
+]]>
+</style>
+
+<path d="M70 20A50 50 0 1 0 70 120" fill="none" stroke-width="1" stroke="black" class="track corner" corner="true"/>
+<path d="M70 120 270 120" fill="none" stroke-width="1" stroke="black" class="track straight" corner="false"/>
+<path d="M270 120A50 50 0 1 0 270 20" fill="none" stroke-width="1" stroke="black" class="track corner" corner="true"/>
+<path d="M270 20 70 20" fill="none" stroke-width="1" stroke="black" class="track straight" corner="false"/>
+
+</svg>
