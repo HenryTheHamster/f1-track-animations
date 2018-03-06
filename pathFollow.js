@@ -27,7 +27,7 @@ function ready(error, xml) {
 
   //Get path start point for placing marker
   function pathStartPoint(path) {
-    console.log(path);
+    // console.log(path);
     var d = path.attr("d"),
     dsplitted = d.split(/[\sA]+/);
     return dsplitted[1].split(",");
@@ -39,28 +39,35 @@ function ready(error, xml) {
     }
     // console.log(paths);
     var classes = paths[i].getAttribute('class').split(' ');
-    console.log(paths[i].getTotalLength());
+    // console.log(paths[i].getTotalLength());
     // debugger;
-    var mul = 20;
+    var speed = 20;
     // var easing = 'linear';
     var easing = d3.easePolyOut.exponent(1.2);
     if(classes.includes('corner')) {
-    //   mul = 20;
-      easing = d3.easePolyIn.exponent(1.4);
+    //   speed = 20;
+      easing = d3.easePolyIn.exponent(1);
     }
-    var time = paths[i].getTotalLength() * mul;
+    var time = paths[i].getTotalLength() * speed;
     // console.print(time);
     marker.transition()
         .duration(time)
-        .ease(easing)
+        .ease(easyLikeSundayMorning())
         .attrTween("transform", translateAlong(paths[i]))
         .each("end", function() { return transition(paths, i + 1) });// infinite loop
   }
   
+  // function ()
 
-  // NEED CUSTOM EASING FUNCTION
+  function easyLikeSundayMorning() {
 
-  
+    return function(x) {
+      return Math.sin(x);
+    };
+  }
+// NEED CUSTOM EASING FUNCTION
+
+
   function translateAlong(path) {
     var l = path.getTotalLength();
     return function(i) {
