@@ -9,9 +9,13 @@ const normalise = (t, b) => (t - b) / (1 - b)
 const linear = (t) => t;
 
 const easeInQuad = (t) => t * t;
-const easeOutQuad = (t) => t * (2 - t);
 
-const eastOutCubic = (t) => (--t) * t * t + 1;
+const easeOut = (p) => (t) => 1 - Math.abs(Math.pow(t - 1, p));
+
+const eastOutQuad = easeOut(2)
+const eastOutCubic = easeOut(3)
+const eastOutQuart = easeOut(4)
+const eastOutQuint = easeOut(5)
 
 const p = (t) => t * 10;
 const v = (t) => t / 10;
