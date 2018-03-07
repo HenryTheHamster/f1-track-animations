@@ -1,9 +1,13 @@
 path {
   fill: none;
-  stroke: #000;
-  stroke-width: 1px;
+  stroke: #ccc;
+  stroke-width: 15px;
 }
 
 circle {
   fill: red;
+}
+
+rect {
+  fill: blue;
 }
