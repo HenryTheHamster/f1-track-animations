@@ -1,0 +1,22 @@
+{
+  "name": "f1-svg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pathFollow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenryTheHamster/f1-track-animations.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HenryTheHamster/f1-track-animations/issues"
+  },
+  "homepage": "https://github.com/HenryTheHamster/f1-track-animations#readme",
+  "dependencies": {
+    "bezier-easing": "^2.0.3"
+  }
+}

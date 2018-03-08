@@ -1,3 +1,5 @@
+var BezierEasing = require('bezier-easing');
+
 queue()
   .defer(d3.xml, "practice.svg", "image/svg+xml")
   .await(ready);
@@ -17,15 +19,16 @@ const eastOutQuint = easeOut(5)
 const p = (t) => t * 10;
 const v = (t) => t / 10;
 
+const straightEase = (t) => 0.2 * Math.sin(t * Math.PI) + t;
+const cornerEase = (t) => 0.2 * Math.sin((t - 1) * Math.PI) + t;
 const Easings = {
-  linear: linear,
-  corner: (t) => lerp(easeInQuad(t), linear(t), t),
-  straight: (t) => lerp(linear(t), eastOutQuad(t), t),
+  // linear: linear,
+  corner: BezierEasing(1.0, 0.6, 0.95, 0.9),
+  straight: BezierEasing(0.5, 1.0, 0.75, 0.85),
 }
 
 const SupportedEasings = Object.keys(Easings);
 const easyLikeSundayMorning = (func) => (t) => Math.max(t, clamp(Easings[func](t)));
-
 
 const pathStartPoint = (path) => path.attr("d").split(/[\sA]+/)[1].split(",")
 const translateAlong = (path) => {
@@ -47,10 +50,12 @@ function transition(marker, speed, paths, i) {
   const classes = path.getAttribute('class').split(' ');
   const easings = classes.filter((classname) => SupportedEasings.includes(classname));
   const easing = easings.length === 0 ? 'linear' : easings[0];
+  // if()
 
+  // console.log(easing);
   marker.transition()
       .duration(time)
-      .ease(easyLikeSundayMorning(easing))
+      .ease(Easings[easing])
       .attrTween("transform", translateAlong(path))
       .each("end", () => transition(marker, speed, paths, thisPath + 1));
 }
@@ -67,9 +72,9 @@ function ready(error, xml) {
   const marker1 = svg.append("circle");
   marker1.attr("r", 5).attr("transform", `translate(${startPoint})`)
 
-  const marker2 = svg.append("rect");
-  marker2.attr("width", 5).attr("height", 5).attr("transform", `translate(${startPoint})`)
+  // const marker2 = svg.append("rect");
+  // marker2.attr("width", 5).attr("height", 5).attr("transform", `translate(${startPoint})`)
 
-  transition(marker1, 5, tracks[0], 0);
-  transition(marker2, 5.25, tracks[0], 1);
+  transition(marker1, 10, tracks[0], 0);
+  // transition(marker2, 5.25, tracks[0], 1);
 }
