@@ -25,6 +25,10 @@ const Easings = {
   // linear: linear,
   corner: BezierEasing(1.0, 0.6, 0.95, 0.9),
   straight: BezierEasing(0.5, 1.0, 0.75, 0.85),
+  cornerStart: BezierEasing(1.0, 0.6, 0.95, 0.9),
+  cornerMiddle: BezierEasing(1.0, 0.6, 0.95, 0.9),
+  straightStart: BezierEasing(1.0, 0.6, 0.95, 0.9),
+  straightMiddle: BezierEasing(1.0, 0.6, 0.95, 0.9)
 }
 
 const SupportedEasings = Object.keys(Easings);
